@@ -6,20 +6,6 @@
     <artifactId>HortonworksSchema</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <repositories>
-        <repository>
-            <id>horton</id>
-            <name>hortonworks</name>
-            <url>https://repo.hortonworks.com/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>maven</id>
-            <name>maven</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-
-    </repositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
@@ -28,8 +14,7 @@
         <slf4j.version>1.7.36</slf4j.version>
         <logback.version>1.2.10</logback.version>
         <picocli.version>4.6.3</picocli.version>
-        <jaxb.version>2.3.0</jaxb.version>
-        <registrySerdes.version>0.10.0.7.2.7.0-87</registrySerdes.version>
+        <jaxb.version>2.4.0-b180830.0359</jaxb.version>
     </properties>
 
     <dependencies>
@@ -38,21 +23,21 @@
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro</artifactId>
-            <version>${avro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro-maven-plugin</artifactId>
-            <version>${avro.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.avro</groupId>-->
+<!--            <artifactId>avro</artifactId>-->
+<!--            <version>${avro.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.avro</groupId>-->
+<!--            <artifactId>avro-maven-plugin</artifactId>-->
+<!--            <version>${avro.version}</version>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.hortonworks.registries/schema-registry-serdes -->
         <dependency>
             <groupId>com.hortonworks.registries</groupId>
             <artifactId>schema-registry-serdes</artifactId>
-            <version>${registrySerdes.version}</version>
+            <version>0.3.1</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>

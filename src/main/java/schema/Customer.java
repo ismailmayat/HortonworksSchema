@@ -5,22 +5,19 @@
  */
 package schema;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
-import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
+@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Customer extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 4519144157292049665L;
-
-
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Customer\",\"namespace\":\"schema\",\"fields\":[{\"name\":\"customerId\",\"type\":\"int\",\"doc\":\"Identifier for reference\"},{\"name\":\"firstName\",\"type\":\"string\",\"doc\":\"First Name of user\"},{\"name\":\"lastName\",\"type\":\"string\",\"doc\":\"Last name of user\"},{\"name\":\"email\",\"type\":\"string\",\"doc\":\"Email address of user\"},{\"name\":\"update\",\"type\":\"string\",\"doc\":\"Update timestamp (as a string)\"},{\"name\":\"epoch\",\"type\":\"int\",\"doc\":\"How often has this user been updated?\"}],\"doc:\":\"Schema of user\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static final SpecificData MODEL$ = new SpecificData();
+  private static SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<Customer> ENCODER =
       new BinaryMessageEncoder<Customer>(MODEL$, SCHEMA$);
@@ -29,16 +26,7 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
       new BinaryMessageDecoder<Customer>(MODEL$, SCHEMA$);
 
   /**
-   * Return the BinaryMessageEncoder instance used by this class.
-   * @return the message encoder used by this class
-   */
-  public static BinaryMessageEncoder<Customer> getEncoder() {
-    return ENCODER;
-  }
-
-  /**
    * Return the BinaryMessageDecoder instance used by this class.
-   * @return the message decoder used by this class
    */
   public static BinaryMessageDecoder<Customer> getDecoder() {
     return DECODER;
@@ -47,44 +35,34 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
   /**
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
-   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<Customer> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<Customer>(MODEL$, SCHEMA$, resolver);
   }
 
-  /**
-   * Serializes this Customer to a ByteBuffer.
-   * @return a buffer holding the serialized data for this instance
-   * @throws java.io.IOException if this instance could not be serialized
-   */
+  /** Serializes this Customer to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /**
-   * Deserializes a Customer from a ByteBuffer.
-   * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Customer instance decoded from the given buffer
-   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
-   */
+  /** Deserializes a Customer from a ByteBuffer. */
   public static Customer fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   /** Identifier for reference */
-  private int customerId;
+  @Deprecated public int customerId;
   /** First Name of user */
-  private java.lang.CharSequence firstName;
+  @Deprecated public java.lang.CharSequence firstName;
   /** Last name of user */
-  private java.lang.CharSequence lastName;
+  @Deprecated public java.lang.CharSequence lastName;
   /** Email address of user */
-  private java.lang.CharSequence email;
+  @Deprecated public java.lang.CharSequence email;
   /** Update timestamp (as a string) */
-  private java.lang.CharSequence update;
+  @Deprecated public java.lang.CharSequence update;
   /** How often has this user been updated? */
-  private int epoch;
+  @Deprecated public int epoch;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -111,7 +89,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     this.epoch = epoch;
   }
 
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
@@ -122,7 +99,7 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     case 3: return email;
     case 4: return update;
     case 5: return epoch;
-    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
@@ -136,7 +113,7 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     case 3: email = (java.lang.CharSequence)value$; break;
     case 4: update = (java.lang.CharSequence)value$; break;
     case 5: epoch = (java.lang.Integer)value$; break;
-    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
@@ -144,17 +121,16 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'customerId' field.
    * @return Identifier for reference
    */
-  public int getCustomerId() {
+  public java.lang.Integer getCustomerId() {
     return customerId;
   }
-
 
   /**
    * Sets the value of the 'customerId' field.
    * Identifier for reference
    * @param value the value to set.
    */
-  public void setCustomerId(int value) {
+  public void setCustomerId(java.lang.Integer value) {
     this.customerId = value;
   }
 
@@ -165,7 +141,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
   public java.lang.CharSequence getFirstName() {
     return firstName;
   }
-
 
   /**
    * Sets the value of the 'firstName' field.
@@ -184,7 +159,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     return lastName;
   }
 
-
   /**
    * Sets the value of the 'lastName' field.
    * Last name of user
@@ -201,7 +175,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
   public java.lang.CharSequence getEmail() {
     return email;
   }
-
 
   /**
    * Sets the value of the 'email' field.
@@ -220,7 +193,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     return update;
   }
 
-
   /**
    * Sets the value of the 'update' field.
    * Update timestamp (as a string)
@@ -234,17 +206,16 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'epoch' field.
    * @return How often has this user been updated?
    */
-  public int getEpoch() {
+  public java.lang.Integer getEpoch() {
     return epoch;
   }
-
 
   /**
    * Sets the value of the 'epoch' field.
    * How often has this user been updated?
    * @param value the value to set.
    */
-  public void setEpoch(int value) {
+  public void setEpoch(java.lang.Integer value) {
     this.epoch = value;
   }
 
@@ -262,11 +233,7 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
    * @return A new Customer RecordBuilder
    */
   public static schema.Customer.Builder newBuilder(schema.Customer.Builder other) {
-    if (other == null) {
-      return new schema.Customer.Builder();
-    } else {
-      return new schema.Customer.Builder(other);
-    }
+    return new schema.Customer.Builder(other);
   }
 
   /**
@@ -275,17 +242,12 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
    * @return A new Customer RecordBuilder
    */
   public static schema.Customer.Builder newBuilder(schema.Customer other) {
-    if (other == null) {
-      return new schema.Customer.Builder();
-    } else {
-      return new schema.Customer.Builder(other);
-    }
+    return new schema.Customer.Builder(other);
   }
 
   /**
    * RecordBuilder for Customer instances.
    */
-  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Customer>
     implements org.apache.avro.data.RecordBuilder<Customer> {
 
@@ -304,7 +266,7 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$, MODEL$);
+      super(SCHEMA$);
     }
 
     /**
@@ -315,27 +277,27 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
       super(other);
       if (isValidValue(fields()[0], other.customerId)) {
         this.customerId = data().deepCopy(fields()[0].schema(), other.customerId);
-        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+        fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.firstName)) {
         this.firstName = data().deepCopy(fields()[1].schema(), other.firstName);
-        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+        fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.lastName)) {
         this.lastName = data().deepCopy(fields()[2].schema(), other.lastName);
-        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+        fieldSetFlags()[2] = true;
       }
       if (isValidValue(fields()[3], other.email)) {
         this.email = data().deepCopy(fields()[3].schema(), other.email);
-        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+        fieldSetFlags()[3] = true;
       }
       if (isValidValue(fields()[4], other.update)) {
         this.update = data().deepCopy(fields()[4].schema(), other.update);
-        fieldSetFlags()[4] = other.fieldSetFlags()[4];
+        fieldSetFlags()[4] = true;
       }
       if (isValidValue(fields()[5], other.epoch)) {
         this.epoch = data().deepCopy(fields()[5].schema(), other.epoch);
-        fieldSetFlags()[5] = other.fieldSetFlags()[5];
+        fieldSetFlags()[5] = true;
       }
     }
 
@@ -344,7 +306,7 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
      * @param other The existing instance to copy.
      */
     private Builder(schema.Customer other) {
-      super(SCHEMA$, MODEL$);
+            super(SCHEMA$);
       if (isValidValue(fields()[0], other.customerId)) {
         this.customerId = data().deepCopy(fields()[0].schema(), other.customerId);
         fieldSetFlags()[0] = true;
@@ -376,10 +338,9 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
       * Identifier for reference
       * @return The value.
       */
-    public int getCustomerId() {
+    public java.lang.Integer getCustomerId() {
       return customerId;
     }
-
 
     /**
       * Sets the value of the 'customerId' field.
@@ -422,7 +383,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     public java.lang.CharSequence getFirstName() {
       return firstName;
     }
-
 
     /**
       * Sets the value of the 'firstName' field.
@@ -467,7 +427,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
       return lastName;
     }
 
-
     /**
       * Sets the value of the 'lastName' field.
       * Last name of user
@@ -510,7 +469,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     public java.lang.CharSequence getEmail() {
       return email;
     }
-
 
     /**
       * Sets the value of the 'email' field.
@@ -555,7 +513,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
       return update;
     }
 
-
     /**
       * Sets the value of the 'update' field.
       * Update timestamp (as a string)
@@ -595,10 +552,9 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
       * How often has this user been updated?
       * @return The value.
       */
-    public int getEpoch() {
+    public java.lang.Integer getEpoch() {
       return epoch;
     }
-
 
     /**
       * Sets the value of the 'epoch' field.
@@ -645,8 +601,6 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
         record.update = fieldSetFlags()[4] ? this.update : (java.lang.CharSequence) defaultValue(fields()[4]);
         record.epoch = fieldSetFlags()[5] ? this.epoch : (java.lang.Integer) defaultValue(fields()[5]);
         return record;
-      } catch (org.apache.avro.AvroMissingFieldException e) {
-        throw e;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
@@ -671,83 +625,4 @@ public class Customer extends org.apache.avro.specific.SpecificRecordBase implem
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeInt(this.customerId);
-
-    out.writeString(this.firstName);
-
-    out.writeString(this.lastName);
-
-    out.writeString(this.email);
-
-    out.writeString(this.update);
-
-    out.writeInt(this.epoch);
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.customerId = in.readInt();
-
-      this.firstName = in.readString(this.firstName instanceof Utf8 ? (Utf8)this.firstName : null);
-
-      this.lastName = in.readString(this.lastName instanceof Utf8 ? (Utf8)this.lastName : null);
-
-      this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
-
-      this.update = in.readString(this.update instanceof Utf8 ? (Utf8)this.update : null);
-
-      this.epoch = in.readInt();
-
-    } else {
-      for (int i = 0; i < 6; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.customerId = in.readInt();
-          break;
-
-        case 1:
-          this.firstName = in.readString(this.firstName instanceof Utf8 ? (Utf8)this.firstName : null);
-          break;
-
-        case 2:
-          this.lastName = in.readString(this.lastName instanceof Utf8 ? (Utf8)this.lastName : null);
-          break;
-
-        case 3:
-          this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
-          break;
-
-        case 4:
-          this.update = in.readString(this.update instanceof Utf8 ? (Utf8)this.update : null);
-          break;
-
-        case 5:
-          this.epoch = in.readInt();
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
-
-
-
-
-
-
-
-
-
-

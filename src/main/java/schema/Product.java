@@ -5,22 +5,19 @@
  */
 package schema;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
-import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
+@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Product extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 1605234145809668334L;
-
-
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Product\",\"namespace\":\"schema\",\"fields\":[{\"name\":\"productId\",\"type\":\"int\",\"doc\":\"Identifier for reference\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the product\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Price per unit\"}],\"doc:\":\"Product that can be ordered\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static final SpecificData MODEL$ = new SpecificData();
+  private static SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<Product> ENCODER =
       new BinaryMessageEncoder<Product>(MODEL$, SCHEMA$);
@@ -29,16 +26,7 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
       new BinaryMessageDecoder<Product>(MODEL$, SCHEMA$);
 
   /**
-   * Return the BinaryMessageEncoder instance used by this class.
-   * @return the message encoder used by this class
-   */
-  public static BinaryMessageEncoder<Product> getEncoder() {
-    return ENCODER;
-  }
-
-  /**
    * Return the BinaryMessageDecoder instance used by this class.
-   * @return the message decoder used by this class
    */
   public static BinaryMessageDecoder<Product> getDecoder() {
     return DECODER;
@@ -47,38 +35,28 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
   /**
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
-   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<Product> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<Product>(MODEL$, SCHEMA$, resolver);
   }
 
-  /**
-   * Serializes this Product to a ByteBuffer.
-   * @return a buffer holding the serialized data for this instance
-   * @throws java.io.IOException if this instance could not be serialized
-   */
+  /** Serializes this Product to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /**
-   * Deserializes a Product from a ByteBuffer.
-   * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Product instance decoded from the given buffer
-   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
-   */
+  /** Deserializes a Product from a ByteBuffer. */
   public static Product fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   /** Identifier for reference */
-  private int productId;
+  @Deprecated public int productId;
   /** Name of the product */
-  private java.lang.CharSequence name;
+  @Deprecated public java.lang.CharSequence name;
   /** Price per unit */
-  private java.lang.CharSequence description;
+  @Deprecated public java.lang.CharSequence description;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -99,7 +77,6 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
     this.description = description;
   }
 
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
@@ -107,7 +84,7 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
     case 0: return productId;
     case 1: return name;
     case 2: return description;
-    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
@@ -118,7 +95,7 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
     case 0: productId = (java.lang.Integer)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
     case 2: description = (java.lang.CharSequence)value$; break;
-    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
@@ -126,17 +103,16 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'productId' field.
    * @return Identifier for reference
    */
-  public int getProductId() {
+  public java.lang.Integer getProductId() {
     return productId;
   }
-
 
   /**
    * Sets the value of the 'productId' field.
    * Identifier for reference
    * @param value the value to set.
    */
-  public void setProductId(int value) {
+  public void setProductId(java.lang.Integer value) {
     this.productId = value;
   }
 
@@ -147,7 +123,6 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
   public java.lang.CharSequence getName() {
     return name;
   }
-
 
   /**
    * Sets the value of the 'name' field.
@@ -165,7 +140,6 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
   public java.lang.CharSequence getDescription() {
     return description;
   }
-
 
   /**
    * Sets the value of the 'description' field.
@@ -190,11 +164,7 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
    * @return A new Product RecordBuilder
    */
   public static schema.Product.Builder newBuilder(schema.Product.Builder other) {
-    if (other == null) {
-      return new schema.Product.Builder();
-    } else {
-      return new schema.Product.Builder(other);
-    }
+    return new schema.Product.Builder(other);
   }
 
   /**
@@ -203,17 +173,12 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
    * @return A new Product RecordBuilder
    */
   public static schema.Product.Builder newBuilder(schema.Product other) {
-    if (other == null) {
-      return new schema.Product.Builder();
-    } else {
-      return new schema.Product.Builder(other);
-    }
+    return new schema.Product.Builder(other);
   }
 
   /**
    * RecordBuilder for Product instances.
    */
-  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Product>
     implements org.apache.avro.data.RecordBuilder<Product> {
 
@@ -226,7 +191,7 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$, MODEL$);
+      super(SCHEMA$);
     }
 
     /**
@@ -237,15 +202,15 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
       super(other);
       if (isValidValue(fields()[0], other.productId)) {
         this.productId = data().deepCopy(fields()[0].schema(), other.productId);
-        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+        fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.name)) {
         this.name = data().deepCopy(fields()[1].schema(), other.name);
-        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+        fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.description)) {
         this.description = data().deepCopy(fields()[2].schema(), other.description);
-        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+        fieldSetFlags()[2] = true;
       }
     }
 
@@ -254,7 +219,7 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
      * @param other The existing instance to copy.
      */
     private Builder(schema.Product other) {
-      super(SCHEMA$, MODEL$);
+            super(SCHEMA$);
       if (isValidValue(fields()[0], other.productId)) {
         this.productId = data().deepCopy(fields()[0].schema(), other.productId);
         fieldSetFlags()[0] = true;
@@ -274,10 +239,9 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
       * Identifier for reference
       * @return The value.
       */
-    public int getProductId() {
+    public java.lang.Integer getProductId() {
       return productId;
     }
-
 
     /**
       * Sets the value of the 'productId' field.
@@ -320,7 +284,6 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
     public java.lang.CharSequence getName() {
       return name;
     }
-
 
     /**
       * Sets the value of the 'name' field.
@@ -365,7 +328,6 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
       return description;
     }
 
-
     /**
       * Sets the value of the 'description' field.
       * Price per unit
@@ -409,8 +371,6 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.description = fieldSetFlags()[2] ? this.description : (java.lang.CharSequence) defaultValue(fields()[2]);
         return record;
-      } catch (org.apache.avro.AvroMissingFieldException e) {
-        throw e;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
@@ -435,59 +395,4 @@ public class Product extends org.apache.avro.specific.SpecificRecordBase impleme
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeInt(this.productId);
-
-    out.writeString(this.name);
-
-    out.writeString(this.description);
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.productId = in.readInt();
-
-      this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
-
-      this.description = in.readString(this.description instanceof Utf8 ? (Utf8)this.description : null);
-
-    } else {
-      for (int i = 0; i < 3; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.productId = in.readInt();
-          break;
-
-        case 1:
-          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
-          break;
-
-        case 2:
-          this.description = in.readString(this.description instanceof Utf8 ? (Utf8)this.description : null);
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
-
-
-
-
-
-
-
-
-
-
