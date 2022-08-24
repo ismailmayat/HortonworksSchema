@@ -14,7 +14,7 @@ import java.util.Random;
 public class ProductProducer {
 
     private final Properties config = new Properties();
-    private final String bootstrapServers = "localhost:9092";
+    private final String bootstrapServers = "localhost:9091";
     private final String schemaRegistryURL = "http://localhost:9090/api/v1";
     private final String productTopic = "product";
 
